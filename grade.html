@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="grade.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1>GP(Grade Point) Calculator</h1>
+        <form>
+            <div class="mb-3 col-3 mx-auto" style="width: 300px;">
+                <label for="ca1" class="form-label">First Semester Ca</label>
+                <input type="text" class="form-control" id="ca1" placeholder="Your First Semester Ca?">
+            </div>
+            <div class="mb-3 col-3 mx-auto" style="width: 300px;">
+                <label for="ca2" class="form-label">Secend Semester Ca</label>
+                <input type="text" class="form-control" id="ca2" placeholder="Your Second Semester Ca?">
+            </div>
+            <div class="mb-3 col-3 mx-auto" style="width: 300px;">
+                <label for="exam" class="form-label"> Examscore</label>
+                <input type="text" class="form-control" id="exam" placeholder="Your Examscore?">
+            </div>
+        </form>
+        <button class=" btn btn-primary d-grid gap-1   col-3 mx-auto btn-lg fs-4 mb-7" style="width: 300px;" onclick="
+    giveGrades();">Submit</button>
+    </div>
+
+
+
+    <script>
+        function giveGrades() {
+            const grading = getGrades();
+            switch (true) {
+                case grading >= 70 && grading <= 100:
+                    result = 'Grade A';
+                    break;
+                case grading >= 60 && grading <= 69.9:
+                    result = 'Grade B';
+                    break;
+                case grading >= 50 && grading <= 59.9:
+                    result = 'Grade C';
+                    break;
+                case grading >= 45 && grading <= 49.9:
+                    result = 'Grade D';
+                    break;
+                case grading >= 40 && grading <= 44.9:
+                    result = 'Grade E';
+                    break;
+                case grading >= 30 && grading <= 39.9:
+                    result = 'Grade F';
+                    break;
+                default:
+                    result = 'invalid';
+            }
+            alert(`You got ${grading}%. ${result}`);
+        }
+
+
+        function getGrades() {
+            const x = document.getElementById("ca1").value;
+            const y = document.getElementById("ca2").value;
+            const z = document.getElementById("exam").value;
+            const a = parseInt(x, 10) + parseInt(y, 10) + parseInt(z, 10);
+            const b = (a) / 100;
+            const c = (b) * 100;
+            const grade = c;
+
+            return (grade);
+        }
+    </script>
+</body>
+
+</html>
